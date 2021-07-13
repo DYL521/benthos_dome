@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="db42bd34-08c8-4b4b-aaa3-c1cd6a908079" name="DYL" url="http://8.142.28.181">
+        <fileTransfer host="8.142.28.181" port="22" rootFolder="/home/DYL/project/benthos_dome" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
