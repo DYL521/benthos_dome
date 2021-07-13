@@ -23,7 +23,4 @@ urlpatterns = [
 
 
     path('test/',views.testjson),
-
-
-
 ]
