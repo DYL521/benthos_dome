@@ -6,7 +6,7 @@ class SummaryReportModel(models.Model):
     pass
 
     class Meta:
-        verbose_name = "各街道汇总报表"
+        verbose_name = "测试页面"
         verbose_name_plural = verbose_name
 
 
