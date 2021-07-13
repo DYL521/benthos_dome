@@ -13,9 +13,6 @@ def summary_report_view(request):
 
 @admin.register(SummaryReportModel)
 class SummaryReportAdmin(admin.ModelAdmin):
-    """
-    各街道汇总报表
-    """
 
     def changelist_view(self, request, extra_context=None):
         return summary_report_view(request)
