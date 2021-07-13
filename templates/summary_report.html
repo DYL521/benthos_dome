@@ -64,8 +64,6 @@
 
 {% block content %}
 
-    <script type="text/javascript" src="{% static "layui/layui.js" %}"></script>
-    <script type="text/javascript" src="{% static "jquery-table2excel/table2excel_ext.js" %}"></script>
 
     <table id="table-data"></table>
     {% if '_popup' not in request.GET %}
@@ -77,23 +75,8 @@
         </div>
     {% endif %}
 
-    {#    <div id="content-main" class="form-main">#}
-    {#        <p>#}
-    {#        <p><label for="">时间范围选择</label>#}
-    {#            <select name="" id="stree">#}
-    {#                <option value="?dimension=week" selected>本周</option>#}
-    {#                <option value="?dimension=month">本月</option>#}
-    {#                <option value="?dimension=year"> 本年度</option>#}
-    {#            </select>#}
-    {#        </p>#}
-    {#        <p><label for="">地区范围选择</label>#}
-    {#            <select name="" id="region">#}
-    {#                <option value="residence">居民区垃圾分类</option>#}
-    {#                <option value="unit">单位垃圾分类</option>#}
-    {#                <option value="store">沿街商铺垃圾分类</option>#}
-    {#                <option value="store_road" selected>沿街道路垃圾分类</option>#}
-    {#            </select>#}
-    {#        </p>#}
+
+
 
     {% block object-tools %}
         {% if change %}{% if not is_popup %}
@@ -101,80 +84,7 @@
         {% csrf_token %}
     {% endblock %}
 
-    <script type="text/javascript" src="{% static "layui/layui.js" %}"></script>
-    <script>
-        {#配置#}
-        var reponse_data = {{ data| safe }};
-        $(function () {
-            var table2Excel;
-            var table = layui.table;
-            var fileName = '长宁区两定小区巡检汇总表';
-            var timeTitle = '2021年4月1日-4月99日';
-            var table_data = table.render({
-                elem: '#table-data' //指定原始表格元素选择器（推荐id选择器）
-                , size: "sm"
-                , title: fileName
-                , cellMinWidth: 145
-                , autoSort: true
-                , style: "background-color: #001010; color: #fff;"
-                , data: reponse_data
-                , toolbar: true
-                , totalRow: false
-                , done: function (res, curr, count) {
-                    table2Excel = new Table2Excel();
-                    table2Excel.preserveColors = false;
-                    table2Excel.append($("#table-data"));
-                }
-                , cols: [
-                    [
-                        {title: fileName, align: "center", colspan: 20},
-                    ], [
-                        {title: timeTitle, align: "center", colspan: 20},
-                    ],
-                    [
-                        {title: '序号', align: "center", rowspan: 3, field: 'index'},
-                        {title: '街道', align: "center", rowspan: 3, field: 'score'},
-                        {title: '小区', align: "center", rowspan: 3, field: 'neighbourhood'},
-                        {title: '有设施设备', align: "center", colspan: 2},
-                        {title: '有宣传告知', align: "center", colspan: 2},
-                        {title: '有回收服务', align: "center", colspan: 2},
-                        {title: '有长效管理', align: "center", colspan: 5},
-                        {title: '有分类实效', align: "center", colspan: 4},
-                        {title: '备注', align: "center", rowspan: 3},
-                    ],
-                    [
-                        {title: '有设备设施（12分）', align: "center", rowspan: 2, field: 'score'},
-                        {title: '分类驳运机具（3分）', align: "center", rowspan: 2, field: 'province'},
-                        {title: '宣传氛围（6分）', align: "center", rowspan: 2, field: 'province'},
-                        {title: '居民知晓（4分）', align: "center", rowspan: 2, field: 'province'},
-                        {title: '服务点管理（5分）', align: "center", rowspan: 2, field: 'province'},
-                        {title: '服务点运行（5分）', align: "center", rowspan: 2, field: 'province'},
-                        {title: '驳运规范（5分）', align: "center", rowspan: 2, field: 'province'},
-                        {title: '环境质量（2.5分）', align: "center", rowspan: 2, field: 'province'},
-                        {title: '异味控制（2.5分）', align: "center", rowspan: 2, field: 'province'},
-                        {title: '及时冲洗（2分）', align: "center", rowspan: 2, field: 'province'},
-                        {title: '小包垃圾（8分）', align: "center", rowspan: 2, field: 'province'},
-
-                        {title: '居民主动参与', align: "center", colspan: 3, field: 'province'},
-                        {title: '分类纯净度', align: "center", rowspan: 2, field: 'province'},
-                    ],
-                    [
-                        {title: '两定居住区', align: "center", field: 'address'},
-                        {title: '两定+误时投放', align: "center", field: 'address'},
-                        {title: '楼层设桶', align: "center", field: 'address'},
-                    ],
-                ]
-            });
 
 
-            // 导出excel点击事件
-            $('#export').click(function () {
-                table2Excel.exportLayTable($('#table-data')
-                    , fileName
-                    ,);
-            });
-        });
-
-    </script>
 {% endblock %}
 
